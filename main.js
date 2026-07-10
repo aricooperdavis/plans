@@ -1,6 +1,8 @@
 var map = L.map("map").setView([51.505, -0.09], 13);
+var polysGroup = L.featureGroup();
 var tilesGroup = L.featureGroup();
 tilesGroup.addTo(map);
+polysGroup.addTo(map);
 
 var osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
@@ -27,7 +29,7 @@ var baseMaps = {
 };
 
 // Add UI elements
-L.control.layers(baseMaps).addTo(map);
+L.control.layers(baseMaps, { "Bounding boxes": polysGroup }).addTo(map);
 var notification = L.control
   .notifications({
     className: "modern",
@@ -59,7 +61,6 @@ function populateMap(obj) {
   map.createPane("planTiles");
   map.getPane("planTiles").style.zIndex = 450;
   map.getPane("planTiles").style.pointerEvents = "none";
-  var plansGroup = L.featureGroup();
 
   // Shoelace formula on raw [lat, lng] pairs — good enough for *relative* size ordering
   function polygonArea(latlngs) {
@@ -119,12 +120,11 @@ function populateMap(obj) {
     );
     // polygon.bindTooltip(plan.name);
     polygon.on("click", toggleTileLayer, tile);
-    plansGroup.addLayer(polygon);
+    polysGroup.addLayer(polygon);
   }
 
   // Render polygons and fit map
-  plansGroup.addTo(map);
-  map.fitBounds(plansGroup.getBounds());
+  map.fitBounds(polysGroup.getBounds());
 
   // Render controls
   var groupProxy = {
