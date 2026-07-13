@@ -112,6 +112,17 @@ function populateMap(obj) {
               ),
           },
           {
+            text: "Open plan (new tab)",
+            callback: (x) =>
+              window
+                .open(
+                  "https://largeimages.bgs.ac.uk/seadragon/mra-amps.html?id=" +
+                    plan.name,
+                  "_blank",
+                )
+                .focus(),
+          },
+          {
             text: "Close",
             callback: () => map.contextmenu.hide(),
           },
