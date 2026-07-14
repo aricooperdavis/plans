@@ -5,27 +5,27 @@ tilesGroup.addTo(map);
 polysGroup.addTo(map);
 
 var osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
   attribution:
     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  maxZoom: 19,
 }).addTo(map);
 var otm = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
   attribution:
     "Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)",
+  maxZoom: 19,
 });
 var ewi = L.tileLayer(
   "http://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png",
   {
-    maxZoom: 19,
     attribution:
       "Powered by Esri | Esri, Vantor, Earthstar Geographics, and the GIS User Community",
+    maxZoom: 19,
   },
 );
 var baseMaps = {
+  "Esri World Imagery": ewi,
   OpenStreetMap: osm,
   OpenTopoMap: otm,
-  "Esri World Imagery": ewi,
 };
 
 // Add UI elements
@@ -33,11 +33,11 @@ L.control.layers(baseMaps, { "Bounding boxes": polysGroup }).addTo(map);
 var notification = L.control
   .notifications({
     className: "modern",
-    timeout: 600000,
-    position: "bottomright",
     closable: true,
     dismissable: true,
     icon: "fa fa-info-circle",
+    position: "bottomright",
+    timeout: 600000,
   })
   .addTo(map);
 notification.info(
@@ -83,7 +83,11 @@ function populateMap(obj) {
   for (const plan of sortedPlans) {
     var tile = L.tileLayer(
       "https://tiles.cooper-davis.net/mra/" + plan.name + "/{z}/{x}/{y}.webp",
-      { pane: "planTiles" },
+      {
+        maxNativeZoom: 18,
+        maxZoom: 19,
+        pane: "planTiles",
+      },
     );
     // tilesGroup.addLayer(tile);
 
@@ -91,8 +95,6 @@ function populateMap(obj) {
     var polygon = L.polygon(
       plan.wgs84Extent.map((c) => c.toReversed()),
       {
-        fillOpacity: 0,
-        pane: "planTiles",
         contextmenu: true,
         contextmenuItems: [
           {
@@ -127,6 +129,8 @@ function populateMap(obj) {
             callback: () => map.contextmenu.hide(),
           },
         ],
+        fillOpacity: 0,
+        pane: "planTiles",
       },
     );
     // polygon.bindTooltip(plan.name);
