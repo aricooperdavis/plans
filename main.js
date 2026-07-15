@@ -82,7 +82,9 @@ function populateMap(obj) {
 
   for (const plan of sortedPlans) {
     var tile = L.tileLayer(
-      "https://tiles.cooper-davis.net/mra/" + plan.name + "/{z}/{x}/{y}.webp",
+      "https://tiles.cooper-davis.net/mra/" +
+        plan.scan_url_id +
+        "/{z}/{x}/{y}.webp",
       {
         maxNativeZoom: 18,
         maxZoom: 19,
@@ -98,7 +100,7 @@ function populateMap(obj) {
         contextmenu: true,
         contextmenuItems: [
           {
-            text: "Plan name: " + plan.name,
+            text: "Plan name: " + String(plan.plan_title),
             disabled: true,
           },
           {
@@ -109,17 +111,28 @@ function populateMap(obj) {
             callback: (x) =>
               navigator.clipboard.writeText(
                 "https://tiles.cooper-davis.net/mra/" +
-                  plan.name +
+                  String(plan.scan_url_id) +
                   "/{z}/{x}/{y}.webp",
               ),
           },
           {
-            text: "Open plan (new tab)",
+            text: "Open scan (new tab)",
             callback: (x) =>
               window
                 .open(
                   "https://largeimages.bgs.ac.uk/seadragon/mra-amps.html?id=" +
-                    plan.name,
+                    String(plan.scan_url_id),
+                  "_blank",
+                )
+                .focus(),
+          },
+          {
+            text: "Open plan details (new tab)",
+            callback: (x) =>
+              window
+                .open(
+                  "https://mine-plans.bgs.ac.uk/plan.html?id=" +
+                    String(plan.feature_id),
                   "_blank",
                 )
                 .focus(),
@@ -133,7 +146,7 @@ function populateMap(obj) {
         pane: "planTiles",
       },
     );
-    // polygon.bindTooltip(plan.name);
+    // polygon.bindTooltip(plan.scan_url_id);
     polygon.on("click", toggleTileLayer, tile);
     polysGroup.addLayer(polygon);
   }
