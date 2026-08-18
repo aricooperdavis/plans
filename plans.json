@@ -133,6 +133,18 @@
       ]
     },
     {
+      "scan_url_id": "00109Q9A",
+      "plan_title": "CARADON EAST SECCOMB'S WILLIAM'S",
+      "feature_id": "21865290.0",
+      "wgs84Extent": [
+        [-4.4342583, 50.5063491],
+        [-4.4340686, 50.5026618],
+        [-4.4242074, 50.5028677],
+        [-4.4243963, 50.506555],
+        [-4.4342583, 50.5063491]
+      ]
+    },
+    {
       "scan_url_id": "00109QAY",
       "plan_title": "CLIFFORD AMALGAMATED CONSOLIDATED AND UNITED ALE AND CAKES DEEBLES POLDORY POLDORY SOUTH WHEAL ANDREW WHEAL CLIFFORD WHEAL CUPBOARD WHEAL FIRE WHEAL FORTUNE WHEAL GIRL WHEAL LOVELACE WHEAL OAK WHEAL PANTER WHEAL VIRGIN",
       "feature_id": "21863860.0",
@@ -310,6 +322,18 @@
         [-5.1785798, 50.318587],
         [-5.179172, 50.3274581],
         [-5.1969206, 50.3269711]
+      ]
+    },
+    {
+      "scan_url_id": "00109VUO",
+      "plan_title": "CARADON SOUTH PEARCE'S RULE'S",
+      "feature_id": "21866924.0",
+      "wgs84Extent": [
+        [-4.4502293, 50.5065805],
+        [-4.4498098, 50.4984772],
+        [-4.4262535, 50.4989708],
+        [-4.426669, 50.5070743],
+        [-4.4502293, 50.5065805]
       ]
     },
     {
