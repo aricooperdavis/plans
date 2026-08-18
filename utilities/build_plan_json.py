@@ -88,6 +88,31 @@ def compact_json(obj, indent=2, level=0):
     return json.dumps(obj)
 
 
+def load_existing_plans(output_path: Path):
+    """Load a previously-written plans.json (if it exists) and return a
+    dict mapping scan_url_id -> plan entry, so already-processed plans
+    can be reused instead of re-fetched."""
+    if not output_path.exists():
+        return {}
+
+    try:
+        with open(output_path, "r") as f:
+            data = json.load(f)
+    except (OSError, json.JSONDecodeError) as e:
+        print(
+            f"  ! Could not read existing {output_path}, starting fresh: {e}",
+            file=sys.stderr,
+        )
+        return {}
+
+    existing = {}
+    for plan in data.get("plans", []):
+        scan_url_id = plan.get("scan_url_id")
+        if scan_url_id:
+            existing[scan_url_id] = plan
+    return existing
+
+
 def get_wgs84_extent(tif_path: Path):
     """Run gdalinfo -json on a file and return the wgs84Extent coordinates
     as a flat list of [lon, lat] pairs (the outer ring)."""
@@ -157,6 +182,12 @@ def main():
         action="store_true",
         help="Skip the BGS API lookup (title/feature_id will be null)",
     )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-process every file, even ones already present in the "
+        "output JSON (default: reuse existing entries and skip re-fetching)",
+    )
     args = parser.parse_args()
 
     directory = Path(args.directory)
@@ -171,7 +202,16 @@ def main():
         )
         sys.exit(1)
 
+    output_path = Path(args.output)
+    existing_plans = {} if args.force else load_existing_plans(output_path)
+    if existing_plans:
+        print(
+            f"Found {len(existing_plans)} existing plan(s) in {output_path}, "
+            "will reuse and skip re-fetching those."
+        )
+
     plans = []
+    skipped = 0
     for tif_path in tif_files:
         name = tif_path.name
         # Strip the _cog.tif suffix to get the plan name
@@ -179,6 +219,12 @@ def main():
             plan_name = name[: -len("_cog.tif")]
         else:
             plan_name = tif_path.stem
+
+        if plan_name in existing_plans:
+            print(f"Skipping {name} (already in {output_path})")
+            plans.append(existing_plans[plan_name])
+            skipped += 1
+            continue
 
         print(f"Processing {name} ...")
         extent = get_wgs84_extent(tif_path)
@@ -199,12 +245,15 @@ def main():
             }
         )
 
-    output_path = Path(args.output)
     with open(output_path, "w") as f:
         f.write(compact_json({"plans": plans}))
         f.write("\n")
 
-    print(f"\nWrote {len(plans)} plan(s) to {output_path}")
+    new_count = len(plans) - skipped
+    print(
+        f"\nWrote {len(plans)} plan(s) to {output_path} "
+        f"({new_count} newly fetched, {skipped} reused)"
+    )
 
 
 if __name__ == "__main__":
