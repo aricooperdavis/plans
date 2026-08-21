@@ -325,6 +325,18 @@
       ]
     },
     {
+      "scan_url_id": "00109VQC",
+      "plan_title": "CARNE GALVER",
+      "feature_id": "21863737.0",
+      "wgs84Extent": [
+        [-5.6201513, 50.1751147],
+        [-5.6195194, 50.1667589],
+        [-5.6079163, 50.1671203],
+        [-5.6085461, 50.1754762],
+        [-5.6201513, 50.1751147]
+      ]
+    },
+    {
       "scan_url_id": "00109VUO",
       "plan_title": "CARADON SOUTH PEARCE'S RULE'S",
       "feature_id": "21866924.0",
