@@ -49,6 +49,18 @@
       ]
     },
     {
+      "scan_url_id": "00109M0R",
+      "plan_title": "TYWARNHAILE UNITED AND UNITED HILLS WHEAL CHARLES WHEAL TOWAN SOUTH",
+      "feature_id": "21860833.0",
+      "wgs84Extent": [
+        [-5.2390987, 50.2838518],
+        [-5.2386011, 50.2765235],
+        [-5.2193575, 50.2770585],
+        [-5.2198522, 50.2843869],
+        [-5.2390987, 50.2838518]
+      ]
+    },
+    {
       "scan_url_id": "00109M13",
       "plan_title": "CRENVER SOUTH",
       "feature_id": "21864913.0",
