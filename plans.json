@@ -133,6 +133,18 @@
       ]
     },
     {
+      "scan_url_id": "00109Q98",
+      "plan_title": "WHEAL ELLEN EAST",
+      "feature_id": "21865513.0",
+      "wgs84Extent": [
+        [-5.2253018, 50.2824445],
+        [-5.2241961, 50.2660846],
+        [-5.1977577, 50.2668156],
+        [-5.1988543, 50.2831759],
+        [-5.2253018, 50.2824445]
+      ]
+    },
+    {
       "scan_url_id": "00109Q9A",
       "plan_title": "CARADON EAST SECCOMB'S WILLIAM'S",
       "feature_id": "21865290.0",
