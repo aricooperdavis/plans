@@ -49,6 +49,18 @@
       ]
     },
     {
+      "scan_url_id": "00109M0L",
+      "plan_title": "TYWARNHAILE UNITED AND UNITED HILLS WHEAL CHARLES WHEAL TOWAN SOUTH",
+      "feature_id": "21860832.0",
+      "wgs84Extent": [
+        [-5.2412417, 50.2899947],
+        [-5.2405624, 50.2799978],
+        [-5.2227325, 50.2804939],
+        [-5.2234081, 50.290491],
+        [-5.2412417, 50.2899947]
+      ]
+    },
+    {
       "scan_url_id": "00109M0R",
       "plan_title": "TYWARNHAILE UNITED AND UNITED HILLS WHEAL CHARLES WHEAL TOWAN SOUTH",
       "feature_id": "21860833.0",
