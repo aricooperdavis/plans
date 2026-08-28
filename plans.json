@@ -649,6 +649,18 @@
       ]
     },
     {
+      "scan_url_id": "0010A6QH",
+      "plan_title": "CONDURROW WEST - FORMERLY TOLCARNE SOUTH",
+      "feature_id": "21861129.0",
+      "wgs84Extent": [
+        [-5.2941423, 50.2047164],
+        [-5.2935759, 50.1964903],
+        [-5.2776837, 50.1969402],
+        [-5.2782474, 50.2051663],
+        [-5.2941423, 50.2047164]
+      ]
+    },
+    {
       "scan_url_id": "0010AB85",
       "plan_title": "LAMBRIGGAN ELBOF",
       "feature_id": "21872854.0",
