@@ -97,6 +97,18 @@
       ]
     },
     {
+      "scan_url_id": "00109MZC",
+      "plan_title": "WHEAL EDWARDS AND WHEAL KERROWE",
+      "feature_id": "21865584.0",
+      "wgs84Extent": [
+        [-5.5788345, 50.1944903],
+        [-5.5767762, 50.1669613],
+        [-5.5433035, 50.1679883],
+        [-5.5453426, 50.1955183],
+        [-5.5788345, 50.1944903]
+      ]
+    },
+    {
       "scan_url_id": "00109N0E",
       "plan_title": "ST. IVES CONSOLS",
       "feature_id": "21864640.0",
