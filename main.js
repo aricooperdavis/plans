@@ -44,6 +44,7 @@ notification.info(
   "MRA Plan Viewer",
   "Click on a polygon to load the plan. Right click for plan metadata.</br>Plans reproduced under <a href='https://www.gov.uk/government/publications/scanned-images-terms-and-conditions-mining-remediation-authority/terms-and-conditions-for-access-to-the-mining-remediations-scanned-images'>MRA terms</a>. Georeferencing by <a href='https://cooper-davis.net'>Ari Cooper-Davis</a>.",
 );
+L.control.locate().addTo(map);
 
 async function populate() {
   // Load plans from remote
