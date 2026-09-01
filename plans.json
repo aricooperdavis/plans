@@ -109,6 +109,18 @@
       ]
     },
     {
+      "scan_url_id": "00109PDG",
+      "plan_title": "WHEAL COATES",
+      "feature_id": "21866896.0",
+      "wgs84Extent": [
+        [-5.2359027, 50.3092673],
+        [-5.2355124, 50.3035213],
+        [-5.2235965, 50.3038526],
+        [-5.2239854, 50.3095987],
+        [-5.2359027, 50.3092673]
+      ]
+    },
+    {
       "scan_url_id": "00109Q4G",
       "plan_title": "RIVER MOOR OR TYWARNHAILE OR BEVAS MOOR",
       "feature_id": "21865731.0",
