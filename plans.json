@@ -121,6 +121,18 @@
       ]
     },
     {
+      "scan_url_id": "00109NVI",
+      "plan_title": "CARVANNEL",
+      "feature_id": "21865170.0",
+      "wgs84Extent": [
+        [-5.2201861, 50.210644],
+        [-5.2196414, 50.202554],
+        [-5.2029561, 50.2030154],
+        [-5.2034981, 50.2111055],
+        [-5.2201861, 50.210644]
+      ]
+    },
+    {
       "scan_url_id": "00109PC4",
       "plan_title": "WHEAL TOWAN CLIFF DOWN TOWAN NORTH WHEAL SOUND WHEAL TALLACK WHEAL TOWAN EAST",
       "feature_id": "21865897.0",
