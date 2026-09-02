@@ -145,6 +145,18 @@
       ]
     },
     {
+      "scan_url_id": "00109Q28",
+      "plan_title": "CAPE CORNWALL",
+      "feature_id": "21866330.0",
+      "wgs84Extent": [
+        [-5.7159751, 50.1306299],
+        [-5.7153962, 50.1231611],
+        [-5.6998413, 50.1236583],
+        [-5.7004178, 50.1311272],
+        [-5.7159751, 50.1306299]
+      ]
+    },
+    {
       "scan_url_id": "00109Q4G",
       "plan_title": "RIVER MOOR OR TYWARNHAILE OR BEVAS MOOR",
       "feature_id": "21865731.0",
