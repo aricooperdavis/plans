@@ -13,6 +13,18 @@
       ]
     },
     {
+      "scan_url_id": "00109KDN",
+      "plan_title": "TRETHELLAN WHEAL BREWER",
+      "feature_id": "21866555.0",
+      "wgs84Extent": [
+        [-5.2059213, 50.2092682],
+        [-5.2054687, 50.2025175],
+        [-5.1951699, 50.2028014],
+        [-5.195621, 50.2095521],
+        [-5.2059213, 50.2092682]
+      ]
+    },
+    {
       "scan_url_id": "00109L7Z",
       "plan_title": "MOUNT WELLINGTON",
       "feature_id": "21871863.0",
