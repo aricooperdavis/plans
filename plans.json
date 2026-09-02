@@ -745,6 +745,18 @@
       ]
     },
     {
+      "scan_url_id": "0010ABWT",
+      "plan_title": "BOSWIN",
+      "feature_id": "21862396.0",
+      "wgs84Extent": [
+        [-5.231712, 50.1621564],
+        [-5.2315149, 50.1592355],
+        [-5.2262309, 50.1593825],
+        [-5.2264277, 50.1623034],
+        [-5.231712, 50.1621564]
+      ]
+    },
+    {
       "scan_url_id": "0010ABYF",
       "plan_title": "TRESAVEAN BELL BLANDFORD'S BOYES CADDY'S DEVONSHIRE GARDEN HARVEY'S JAMES MAGORS MITCHELLS MOOR NEW NORTH ROGER'S SAMPSON'S TRETHELLAN TREVISKEY TREWICKES WILLIAMS",
       "feature_id": "21861222.0",
