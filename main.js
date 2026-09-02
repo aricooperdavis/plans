@@ -1,9 +1,11 @@
 var map = L.map("map").setView([51.505, -0.09], 13);
+var searchIndex = [];
 var polysGroup = L.featureGroup();
+polysGroup.addTo(map);
 var tilesGroup = L.featureGroup();
 tilesGroup.addTo(map);
-polysGroup.addTo(map);
 
+// Basemaps
 var osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -28,7 +30,7 @@ var baseMaps = {
   OpenTopoMap: otm,
 };
 
-// Add UI elements
+// UI elements
 L.control.layers(baseMaps, { "Bounding boxes": polysGroup }).addTo(map);
 var notification = L.control
   .notifications({
@@ -45,6 +47,119 @@ notification.info(
   "Click on a polygon to load the plan. Right click for plan metadata.</br>Plans reproduced under <a href='https://www.gov.uk/government/publications/scanned-images-terms-and-conditions-mining-remediation-authority/terms-and-conditions-for-access-to-the-mining-remediations-scanned-images'>MRA terms</a>. Georeferencing by <a href='https://cooper-davis.net'>Ari Cooper-Davis</a>.",
 );
 L.control.locate().addTo(map);
+
+var searchControl = L.Control.extend({
+  options: { position: "bottomleft" },
+  onAdd: function (map) {
+    const container = L.DomUtil.create(
+      "div",
+      "leaflet-control-layers leaflet-control",
+    );
+    container.style.padding = "4px";
+
+    const input = L.DomUtil.create("input", "", container);
+    input.type = "text";
+    input.placeholder = "Search plans...";
+    input.style.display = "block";
+    input.style.width = "180px";
+
+    const resultsList = L.DomUtil.create("ul", "", container);
+    resultsList.style.listStyle = "none";
+    resultsList.style.margin = "4px 0 0 0";
+    resultsList.style.padding = "0";
+    resultsList.style.maxHeight = "220px";
+    resultsList.style.overflowY = "auto";
+    resultsList.style.display = "none";
+
+    function selectPlan(entry) {
+      map.fitBounds(entry.layer.getBounds());
+      if (!tilesGroup.hasLayer(entry.tile)) {
+        toggleTileLayer.call(entry.tile);
+      }
+      resultsList.style.display = "none";
+      input.value = entry.title || entry.scanId;
+    }
+
+    function renderResults(entries) {
+      resultsList.innerHTML = "";
+      if (entries.length === 0) {
+        resultsList.style.display = "none";
+        return;
+      }
+      entries.forEach((entry) => {
+        const li = L.DomUtil.create("li", "", resultsList);
+        li.style.padding = "4px 6px";
+        li.style.cursor = "pointer";
+        li.style.borderBottom = "1px solid #eee";
+        li.textContent = entry.title
+          ? `${entry.title} (${entry.scanId})`
+          : entry.scanId;
+        L.DomEvent.on(li, "click", () => selectPlan(entry));
+        L.DomEvent.on(li, "mouseover", () => (li.style.background = "#f0f0f0"));
+        L.DomEvent.on(li, "mouseout", () => (li.style.background = ""));
+      });
+      resultsList.style.display = "block";
+    }
+
+    L.DomEvent.on(input, "input", () => {
+      const q = input.value.trim();
+      if (!q) {
+        resultsList.style.display = "none";
+        return;
+      }
+      renderResults(searchPlans(q));
+    });
+
+    // close dropdown when clicking elsewhere on the map or esc key
+    map.on("click", () => (resultsList.style.display = "none"));
+    L.DomEvent.on(input, "keydown", (e) => {
+      if (e.key === "Escape") {
+        resultsList.style.display = "none";
+        input.blur();
+      }
+    });
+
+    L.DomEvent.disableClickPropagation(container);
+    L.DomEvent.disableScrollPropagation(container);
+    return container;
+  },
+});
+map.addControl(new searchControl());
+
+function fuzzyScore(query, target) {
+  if (!target) return -1;
+  query = query.toLowerCase().trim();
+  target = target.toLowerCase();
+  if (!query) return -1;
+
+  const idx = target.indexOf(query);
+  if (idx !== -1) return 1000 - idx; // substring match, earlier = better
+
+  // subsequence fallback: every query char must appear in order
+  let qi = 0, score = 0, last = -1;
+  for (let ti = 0; ti < target.length && qi < query.length; ti++) {
+    if (target[ti] === query[qi]) {
+      score += last === ti - 1 ? 5 : 1; // bonus for consecutive matches
+      last = ti;
+      qi++;
+    }
+  }
+  return qi === query.length ? score : -1;
+}
+
+function searchPlans(query, limit = 8) {
+  const results = [];
+  for (const entry of searchIndex) {
+    const s = Math.max(
+      fuzzyScore(query, entry.title),
+      fuzzyScore(query, entry.scanId),
+      fuzzyScore(query, entry.featureId),
+    );
+    if (s > -1) results.push({ entry, score: s });
+  }
+  results.sort((a, b) => b.score - a.score);
+  return results.slice(0, limit).map((r) => r.entry);
+}
 
 async function populate() {
   // Load plans from remote
@@ -147,9 +262,18 @@ function populateMap(obj) {
         pane: "planTiles",
       },
     );
-    // polygon.bindTooltip(plan.scan_url_id);
+
     polygon.on("click", toggleTileLayer, tile);
     polysGroup.addLayer(polygon);
+
+    // Populate search index
+    searchIndex.push({
+      title: plan.plan_title || "",
+      scanId: plan.scan_url_id || "",
+      featureId: plan.feature_id || "",
+      layer: polygon,
+      tile: tile,
+    });
   }
 
   // Render polygons and fit map
@@ -174,6 +298,7 @@ function toggleTileLayer() {
     tilesGroup.removeLayer(this);
   } else {
     tilesGroup.addLayer(this);
+
   }
 }
 
