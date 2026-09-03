@@ -109,6 +109,18 @@
       ]
     },
     {
+      "scan_url_id": "00109MY6",
+      "plan_title": "WHEAL MERTH OR WHEAL MARGARET EAST OR TREVETHOE",
+      "feature_id": "21863558.0",
+      "wgs84Extent": [
+        [-5.4704323, 50.1711487],
+        [-5.470014, 50.1653782],
+        [-5.4590032, 50.165707],
+        [-5.4594202, 50.1714775],
+        [-5.4704323, 50.1711487]
+      ]
+    },
+    {
       "scan_url_id": "00109MZC",
       "plan_title": "WHEAL EDWARDS AND WHEAL KERROWE",
       "feature_id": "21865584.0",
