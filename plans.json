@@ -529,6 +529,18 @@
       ]
     },
     {
+      "scan_url_id": "00109YPU",
+      "plan_title": "EASTDOWNS",
+      "feature_id": "21864953.0",
+      "wgs84Extent": [
+        [-5.2022838, 50.2679613],
+        [-5.201553, 50.2570687],
+        [-5.1775593, 50.2577277],
+        [-5.1782846, 50.2686205],
+        [-5.2022838, 50.2679613]
+      ]
+    },
+    {
       "scan_url_id": "00109Z3K",
       "plan_title": "CHACEWATER OR BUSY WHEAL FIRE WHEAL HODGE WHEAL SPARABLE WHEAL VOR",
       "feature_id": "21867323.0",
