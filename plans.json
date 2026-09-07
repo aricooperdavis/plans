@@ -529,6 +529,18 @@
       ]
     },
     {
+      "scan_url_id": "00109WFK",
+      "plan_title": "GWIN AND SINGER (BREAGE)",
+      "feature_id": "21864187.0",
+      "wgs84Extent": [
+        [-5.3393651, 50.1357403],
+        [-5.3383271, 50.120838],
+        [-5.3142578, 50.1215281],
+        [-5.3152884, 50.1364308],
+        [-5.3393651, 50.1357403]
+      ]
+    },
+    {
       "scan_url_id": "00109XT4",
       "plan_title": "CLIFFORD AMALGAMATED CONSOLIDATED AND UNITED ALE AND CAKES DEEBLES POLDORY POLDORY SOUTH WHEAL ANDREW WHEAL CLIFFORD WHEAL CUPBOARD WHEAL FIRE WHEAL FORTUNE WHEAL GIRL WHEAL LOVELACE WHEAL OAK WHEAL PANTER WHEAL VIRGIN",
       "feature_id": "21864048.0",
