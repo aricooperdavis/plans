@@ -24,10 +24,19 @@ var ewi = L.tileLayer(
     maxZoom: 19,
   },
 );
+var oso = L.tileLayer(
+  "https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=xAXiUyhGe2PCABd7fAoqREBbFCA8MSa5",
+  {
+    attribution:
+      "Contains OS data © Crown copyright and database rights 2026",
+    maxZoom: 19,
+  },
+);
 var baseMaps = {
   "Esri World Imagery": ewi,
   OpenStreetMap: osm,
   OpenTopoMap: otm,
+  "OS Outdoor": oso,
 };
 
 // UI elements
