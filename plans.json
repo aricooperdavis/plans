@@ -817,6 +817,18 @@
       ]
     },
     {
+      "scan_url_id": "0010A3D5",
+      "plan_title": "HALLENBEAGLE",
+      "feature_id": "21866717.0",
+      "wgs84Extent": [
+        [-5.2015452, 50.2622891],
+        [-5.2008834, 50.2524221],
+        [-5.1805976, 50.2529795],
+        [-5.1812552, 50.2628466],
+        [-5.2015452, 50.2622891]
+      ]
+    },
+    {
       "scan_url_id": "0010A6QB",
       "plan_title": "GRAVELHILL BORLASE PENWORTHA",
       "feature_id": "21872156.0",
