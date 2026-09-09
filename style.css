@@ -33,3 +33,26 @@
 .plan-search-result:hover {
   background: #f0f0f0;
 }
+
+.plan-polygon {
+  stroke: #3388ff;
+  stroke-width: 2;
+  stroke-opacity: 0.8;
+  fill: none;
+}
+
+.leaflet-overlay-pane > svg path.plan-polygon {
+  pointer-events: all;
+}
+
+.plan-polygon-hover {
+  stroke: #ff7800;
+  stroke-width: 3;
+  stroke-opacity: 1;
+}
+
+.plan-polygon-selected {
+  stroke: #e60000;
+  stroke-width: 4;
+  stroke-opacity: 1;
+}

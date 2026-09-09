@@ -81,7 +81,10 @@ var searchControl = L.Control.extend({
       if (!tilesGroup.hasLayer(entry.tile)) {
         toggleTileLayer.call(entry.tile);
       }
-      L.DomUtil.removeClass(resultsList, "is-visible");
+
+      updatePolygonState(entry.layer, entry.tile);
+
+      resultsList.style.display = "none";
       input.value = entry.title || entry.scanId;
     }
 
@@ -115,7 +118,6 @@ var searchControl = L.Control.extend({
       renderResults(searchPlans(q));
     });
 
-    // close dropdown when clicking elsewhere on the map or esc key
     map.on("click", () => (resultsList.style.display = "none"));
     L.DomEvent.on(input, "keydown", (e) => {
       if (e.key === "Escape") {
@@ -138,13 +140,18 @@ function fuzzyScore(query, target) {
   if (!query) return -1;
 
   const idx = target.indexOf(query);
-  if (idx !== -1) return 1000 - idx; // substring match, earlier = better
 
-  // subsequence fallback: every query char must appear in order
-  let qi = 0, score = 0, last = -1;
+  if (idx !== -1) {
+    return 1000 - idx;
+  }
+
+  let qi = 0;
+  let score = 0;
+  let last = -1;
+
   for (let ti = 0; ti < target.length && qi < query.length; ti++) {
     if (target[ti] === query[qi]) {
-      score += last === ti - 1 ? 5 : 1; // bonus for consecutive matches
+      score += last === ti - 1 ? 5 : 1;
       last = ti;
       qi++;
     }
@@ -155,19 +162,22 @@ function fuzzyScore(query, target) {
 function searchPlans(query, limit = 8) {
   const results = [];
   for (const entry of searchIndex) {
-    const s = Math.max(
+    const score = Math.max(
       fuzzyScore(query, entry.title),
       fuzzyScore(query, entry.scanId),
       fuzzyScore(query, entry.featureId),
     );
-    if (s > -1) results.push({ entry, score: s });
+
+    if (score > -1) {
+      results.push({ entry, score });
+    }
   }
   results.sort((a, b) => b.score - a.score);
-  return results.slice(0, limit).map((r) => r.entry);
+
+  return results.slice(0, limit).map((result) => result.entry);
 }
 
 async function populate() {
-  // Load plans from remote
   const requestURL = "plans.json";
   const request = new Request(requestURL);
 
@@ -183,7 +193,6 @@ function populateMap(obj) {
   map.getPane("planTiles").style.zIndex = 450;
   map.getPane("planTiles").style.pointerEvents = "none";
 
-  // Shoelace formula on raw [lat, lng] pairs — good enough for *relative* size ordering
   function polygonArea(latlngs) {
     let area = 0;
     const n = latlngs.length;
@@ -195,14 +204,12 @@ function populateMap(obj) {
     return Math.abs(area / 2);
   }
 
-  // Sort largest-area first, so smaller polygons are added later
-  // and therefore rendered on top (Leaflet stacks layers in add order).
   const sortedPlans = [...plans].sort(
     (a, b) => polygonArea(b.wgs84Extent) - polygonArea(a.wgs84Extent),
   );
 
   for (const plan of sortedPlans) {
-    var tile = L.tileLayer(
+    const tile = L.tileLayer(
       "https://tiles.cooper-davis.net/mra/" +
         plan.scan_url_id +
         "/{z}/{x}/{y}.webp",
@@ -212,12 +219,11 @@ function populateMap(obj) {
         pane: "planTiles",
       },
     );
-    // tilesGroup.addLayer(tile);
 
-    // Create polygon for map overview and handle events
-    var polygon = L.polygon(
+    const polygon = L.polygon(
       plan.wgs84Extent.map((c) => c.toReversed()),
       {
+        className: "plan-polygon",
         contextmenu: true,
         contextmenuItems: [
           {
@@ -229,7 +235,7 @@ function populateMap(obj) {
           },
           {
             text: "Copy XYZ URL",
-            callback: (x) =>
+            callback: () =>
               navigator.clipboard.writeText(
                 "https://tiles.cooper-davis.net/mra/" +
                   String(plan.scan_url_id) +
@@ -238,25 +244,21 @@ function populateMap(obj) {
           },
           {
             text: "Open scan (new tab)",
-            callback: (x) =>
-              window
-                .open(
-                  "https://largeimages.bgs.ac.uk/seadragon/mra-amps.html?id=" +
-                    String(plan.scan_url_id),
-                  "_blank",
-                )
-                .focus(),
+            callback: () =>
+              window.open(
+                "https://largeimages.bgs.ac.uk/seadragon/mra-amps.html?id=" +
+                  String(plan.scan_url_id),
+                "_blank",
+              ),
           },
           {
             text: "Open plan details (new tab)",
-            callback: (x) =>
-              window
-                .open(
-                  "https://mine-plans.bgs.ac.uk/plan.html?id=" +
-                    String(plan.feature_id),
-                  "_blank",
-                )
-                .focus(),
+            callback: () =>
+              window.open(
+                "https://mine-plans.bgs.ac.uk/plan.html?id=" +
+                  String(plan.feature_id),
+                "_blank",
+              ),
           },
           {
             text: "Close",
@@ -264,14 +266,26 @@ function populateMap(obj) {
           },
         ],
         fillOpacity: 0,
-        pane: "planTiles",
       },
     );
 
-    polygon.on("click", toggleTileLayer, tile);
+    polygon.on({
+      mouseover: function () {
+        this.getElement()?.classList.add("plan-polygon-hover");
+      },
+
+      mouseout: function () {
+        this.getElement()?.classList.remove("plan-polygon-hover");
+      },
+
+      click: function () {
+        toggleTileLayer.call(tile);
+        updatePolygonState(this, tile);
+      },
+    });
+
     polysGroup.addLayer(polygon);
 
-    // Populate search index
     searchIndex.push({
       title: plan.plan_title || "",
       scanId: plan.scan_url_id || "",
@@ -281,23 +295,28 @@ function populateMap(obj) {
     });
   }
 
-  // Render polygons and fit map
   map.fitBounds(polysGroup.getBounds());
 
-  // Render controls
   var groupProxy = {
     _url: "proxy",
     options: { opacity: 1 },
     setOpacity: function (opacity) {
       tilesGroup.eachLayer(function (layer) {
-        if (layer.setOpacity) layer.setOpacity(opacity);
+        if (layer.setOpacity) {
+          layer.setOpacity(opacity);
+        }
       });
     },
   };
   L.control.opacity({ "Plan opacity": groupProxy }).addTo(map);
 }
 
-// Toggle plan tileLayers on polygon click
+function updatePolygonState(polygon, tile) {
+  polygon
+    .getElement()
+    ?.classList.toggle("plan-polygon-selected", tilesGroup.hasLayer(tile));
+}
+
 function toggleTileLayer() {
   if (tilesGroup.hasLayer(this)) {
     tilesGroup.removeLayer(this);
