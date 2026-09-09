@@ -1,3 +1,35 @@
 #map {
     height: 98.25vh;
 }
+
+.plan-search-control {
+  padding: 4px;
+}
+
+.plan-search-input {
+  display: block;
+  width: 180px;
+}
+
+.plan-search-results {
+  display: none;
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.plan-search-results.is-visible {
+  display: block;
+}
+
+.plan-search-result {
+  padding: 4px 6px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.plan-search-result:hover {
+  background: #f0f0f0;
+}

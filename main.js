@@ -64,28 +64,24 @@ var searchControl = L.Control.extend({
       "div",
       "leaflet-control-layers leaflet-control",
     );
-    container.style.padding = "4px";
+    L.DomUtil.addClass(container, "plan-search-control");
 
-    const input = L.DomUtil.create("input", "", container);
+    const input = L.DomUtil.create("input", "plan-search-input", container);
     input.type = "text";
     input.placeholder = "Search plans...";
-    input.style.display = "block";
-    input.style.width = "180px";
 
-    const resultsList = L.DomUtil.create("ul", "", container);
-    resultsList.style.listStyle = "none";
-    resultsList.style.margin = "4px 0 0 0";
-    resultsList.style.padding = "0";
-    resultsList.style.maxHeight = "220px";
-    resultsList.style.overflowY = "auto";
-    resultsList.style.display = "none";
+    const resultsList = L.DomUtil.create(
+      "ul",
+      "plan-search-results",
+      container,
+    );
 
     function selectPlan(entry) {
       map.fitBounds(entry.layer.getBounds());
       if (!tilesGroup.hasLayer(entry.tile)) {
         toggleTileLayer.call(entry.tile);
       }
-      resultsList.style.display = "none";
+      L.DomUtil.removeClass(resultsList, "is-visible");
       input.value = entry.title || entry.scanId;
     }
 
@@ -307,7 +303,6 @@ function toggleTileLayer() {
     tilesGroup.removeLayer(this);
   } else {
     tilesGroup.addLayer(this);
-
   }
 }
 
