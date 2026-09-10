@@ -469,6 +469,18 @@
       ]
     },
     {
+      "scan_url_id": "00109UJ3",
+      "plan_title": "KITTY NEW",
+      "feature_id": "21862445.0",
+      "wgs84Extent": [
+        [-5.213664, 50.314028],
+        [-5.2130761, 50.3053119],
+        [-5.19577, 50.3057893],
+        [-5.1963547, 50.3145056],
+        [-5.213664, 50.314028]
+      ]
+    },
+    {
       "scan_url_id": "00109UKT",
       "plan_title": "WHEAL PEEVOR AND WHEAL PEEVOR WEST (THIS RECORD LOST IN TRANSIT - BRITISH RAIL 02-06-1969)",
       "feature_id": "21861725.0",
