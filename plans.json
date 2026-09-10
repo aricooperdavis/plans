@@ -517,6 +517,18 @@
       ]
     },
     {
+      "scan_url_id": "00109VUG",
+      "plan_title": "HOLMBUSH EAST FLOP JACK HOPEWELL LADY BEAM",
+      "feature_id": "21866542.0",
+      "wgs84Extent": [
+        [-4.32276, 50.5331028],
+        [-4.3221461, 50.5205969],
+        [-4.2932037, 50.5211708],
+        [-4.2938101, 50.533677],
+        [-4.32276, 50.5331028]
+      ]
+    },
+    {
       "scan_url_id": "00109VUO",
       "plan_title": "CARADON SOUTH PEARCE'S RULE'S",
       "feature_id": "21866924.0",
