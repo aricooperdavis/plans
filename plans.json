@@ -805,6 +805,18 @@
       ]
     },
     {
+      "scan_url_id": "0010A2LN",
+      "plan_title": "HERODSFOOT HERODSFOOT NORTH",
+      "feature_id": "21861789.0",
+      "wgs84Extent": [
+        [-4.5256266, 50.4228811],
+        [-4.5251735, 50.4143639],
+        [-4.5095939, 50.4147012],
+        [-4.5100442, 50.4232185],
+        [-4.5256266, 50.4228811]
+      ]
+    },
+    {
       "scan_url_id": "0010A37N",
       "plan_title": "CHIVERTON NEW",
       "feature_id": "21866452.0",
