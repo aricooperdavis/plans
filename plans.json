@@ -973,6 +973,18 @@
       ]
     },
     {
+      "scan_url_id": "0010AB9F",
+      "plan_title": "LADY GWENDOLINE AND WHEAL REETH",
+      "feature_id": "21871895.0",
+      "wgs84Extent": [
+        [-5.3819234, 50.1270107],
+        [-5.3812983, 50.1181466],
+        [-5.3674356, 50.1185498],
+        [-5.3680582, 50.127414],
+        [-5.3819234, 50.1270107]
+      ]
+    },
+    {
       "scan_url_id": "0010ABBH",
       "plan_title": "CARNAQUIDDEN",
       "feature_id": "21863335.0",
