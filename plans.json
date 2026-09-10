@@ -985,6 +985,18 @@
       ]
     },
     {
+      "scan_url_id": "0010ABYB",
+      "plan_title": "KINGSDOWN",
+      "feature_id": "21861444.0",
+      "wgs84Extent": [
+        [-4.8613391, 50.3191518],
+        [-4.8610411, 50.3141904],
+        [-4.8532628, 50.3143816],
+        [-4.85356, 50.3193431],
+        [-4.8613391, 50.3191518]
+      ]
+    },
+    {
       "scan_url_id": "0010ABYF",
       "plan_title": "TRESAVEAN BELL BLANDFORD'S BOYES CADDY'S DEVONSHIRE GARDEN HARVEY'S JAMES MAGORS MITCHELLS MOOR NEW NORTH ROGER'S SAMPSON'S TRETHELLAN TREVISKEY TREWICKES WILLIAMS",
       "feature_id": "21861222.0",
