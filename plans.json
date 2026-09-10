@@ -361,6 +361,18 @@
       ]
     },
     {
+      "scan_url_id": "00109SZT",
+      "plan_title": "KITTY WEST REYNOLDS THOMAS WHEAL FRIENDLY",
+      "feature_id": "21866525.0",
+      "wgs84Extent": [
+        [-5.2176851, 50.3164162],
+        [-5.2170274, 50.3066804],
+        [-5.1988028, 50.3071837],
+        [-5.1994566, 50.3169197],
+        [-5.2176851, 50.3164162]
+      ]
+    },
+    {
       "scan_url_id": "00109T0Z",
       "plan_title": "BUZZA",
       "feature_id": "21864621.0",
