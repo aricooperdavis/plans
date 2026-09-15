@@ -169,6 +169,18 @@
       ]
     },
     {
+      "scan_url_id": "00109NXS",
+      "plan_title": "MELLANEAR",
+      "feature_id": "21865509.0",
+      "wgs84Extent": [
+        [-5.4268311, 50.179186],
+        [-5.4261864, 50.1701804],
+        [-5.4103226, 50.1706478],
+        [-5.4109643, 50.1796536],
+        [-5.4268311, 50.179186]
+      ]
+    },
+    {
       "scan_url_id": "00109PC4",
       "plan_title": "WHEAL TOWAN CLIFF DOWN TOWAN NORTH WHEAL SOUND WHEAL TALLACK WHEAL TOWAN EAST",
       "feature_id": "21865897.0",
