@@ -73,6 +73,18 @@
       ]
     },
     {
+      "scan_url_id": "00109LIB",
+      "plan_title": "ONSLOW CONSOLS GREAT",
+      "feature_id": "21867265.0",
+      "wgs84Extent": [
+        [-4.7155898, 50.577656],
+        [-4.7140511, 50.5508888],
+        [-4.6643706, 50.5520366],
+        [-4.6658812, 50.578805],
+        [-4.7155898, 50.577656]
+      ]
+    },
+    {
       "scan_url_id": "00109M0L",
       "plan_title": "TYWARNHAILE UNITED AND UNITED HILLS WHEAL CHARLES WHEAL TOWAN SOUTH",
       "feature_id": "21860832.0",
