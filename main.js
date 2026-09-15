@@ -227,8 +227,8 @@ function populateMap(obj) {
 
   for (const plan of sortedPlans) {
     const tile = L.tileLayer(planTileUrl(plan.scan_url_id), {
-      maxNativeZoom: 18,
-      maxZoom: 19,
+      maxNativeZoom: 19,
+      maxZoom: 20,
       pane: "planTiles",
     });
 
