@@ -9,26 +9,29 @@ tilesGroup.addTo(map);
 var osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  maxZoom: 19,
+  maxZoom: 20,
+  maxNativeZoom: 19
 }).addTo(map);
 var otm = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
   attribution:
     "Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)",
-  maxZoom: 19,
+  maxZoom: 20,
+  maxNativeZoom: 17
 });
 var ewi = L.tileLayer(
   "http://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png",
   {
     attribution:
       "Powered by Esri | Esri, Vantor, Earthstar Geographics, and the GIS User Community",
-    maxZoom: 19,
+    maxZoom: 20,
+    maxNativeZoom: 19
   },
 );
 var oso = L.tileLayer(
   "https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=xAXiUyhGe2PCABd7fAoqREBbFCA8MSa5",
   {
     attribution: "Contains OS data © Crown copyright and database rights 2026",
-    maxZoom: 19,
+    maxZoom: 20,
   },
 );
 var baseMaps = {
@@ -52,7 +55,7 @@ var notification = L.control
   .addTo(map);
 notification.info(
   "MRA Plan Viewer",
-  "Click on a polygon to load the plan. Right click for plan metadata.</br>Plans reproduced under <a href='https://www.gov.uk/government/publications/scanned-images-terms-and-conditions-mining-remediation-authority/terms-and-conditions-for-access-to-the-mining-remediations-scanned-images'>MRA terms</a>. Georeferencing by <a href='https://cooper-davis.net'>Ari Cooper-Davis</a>.",
+  "Click a square to load the plan. Right click for links and metadata.</br>Plans reproduced under <a href='https://www.gov.uk/government/publications/scanned-images-terms-and-conditions-mining-remediation-authority/terms-and-conditions-for-access-to-the-mining-remediations-scanned-images'>MRA terms</a>. Georeferencing by <a href='https://cooper-davis.net'>Ari Cooper-Davis</a>.",
 );
 L.control.locate().addTo(map);
 
