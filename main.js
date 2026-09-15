@@ -56,18 +56,25 @@ notification.info(
 );
 L.control.locate().addTo(map);
 
-function activatePlan(entry) {
-  map.fitBounds(entry.layer.getBounds());
-  if (!tilesGroup.hasLayer(entry.tile)) {
-    toggleTileLayer.call(entry.tile);
-  }
-  updatePolygonState(entry.layer, entry.tile);
+function planTileUrl(scanUrlId) {
+  return "https://tiles.cooper-davis.net/mra/" + scanUrlId + "/{z}/{x}/{y}.webp";
 }
 
-function findEntryByScanId(scanId) {
-  if (!scanId) return null;
-  return searchIndex.find((entry) => String(entry.scanId) === String(scanId));
+function setTileVisible(polygon, tile, visible) {
+  if (visible) {
+    tilesGroup.addLayer(tile);
+  } else {
+    tilesGroup.removeLayer(tile);
+  }
+  polygon.getElement()?.classList.toggle("plan-polygon-selected", visible);
 }
+
+function activatePlan(entry) {
+  map.fitBounds(entry.layer.getBounds());
+  setTileVisible(entry.layer, entry.tile, true);
+}
+
+var selectPlanFromSearch;
 
 var searchControl = L.Control.extend({
   options: { position: "bottomleft" },
@@ -136,13 +143,12 @@ var searchControl = L.Control.extend({
     L.DomEvent.disableClickPropagation(container);
     L.DomEvent.disableScrollPropagation(container);
 
-    container._selectPlan = selectPlan;
+    selectPlanFromSearch = selectPlan;
 
     return container;
   },
 });
-var searchControlInstance = new searchControl();
-map.addControl(searchControlInstance);
+map.addControl(new searchControl());
 
 function fuzzyScore(query, target) {
   if (!target) return -1;
@@ -220,16 +226,11 @@ function populateMap(obj) {
   );
 
   for (const plan of sortedPlans) {
-    const tile = L.tileLayer(
-      "https://tiles.cooper-davis.net/mra/" +
-        plan.scan_url_id +
-        "/{z}/{x}/{y}.webp",
-      {
-        maxNativeZoom: 18,
-        maxZoom: 19,
-        pane: "planTiles",
-      },
-    );
+    const tile = L.tileLayer(planTileUrl(plan.scan_url_id), {
+      maxNativeZoom: 18,
+      maxZoom: 19,
+      pane: "planTiles",
+    });
 
     const polygon = L.polygon(
       plan.wgs84Extent.map((c) => c.toReversed()),
@@ -247,11 +248,7 @@ function populateMap(obj) {
           {
             text: "Copy XYZ URL",
             callback: () =>
-              navigator.clipboard.writeText(
-                "https://tiles.cooper-davis.net/mra/" +
-                  String(plan.scan_url_id) +
-                  "/{z}/{x}/{y}.webp",
-              ),
+              navigator.clipboard.writeText(planTileUrl(plan.scan_url_id)),
           },
           {
             text: "Open scan (new tab)",
@@ -298,8 +295,7 @@ function populateMap(obj) {
       },
 
       click: function () {
-        toggleTileLayer.call(tile);
-        updatePolygonState(this, tile);
+        setTileVisible(this, tile, !tilesGroup.hasLayer(tile));
       },
     });
 
@@ -327,17 +323,20 @@ function populateMap(obj) {
       });
     },
   };
-
   L.control.opacity({ "Plan opacity": groupProxy }).addTo(map);
+
   applyPlanFromUrl();
 }
 
 function applyPlanFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  const scanUrlId = params.get("scan_url_id");
+  const scanUrlId = new URLSearchParams(window.location.search).get(
+    "scan_url_id",
+  );
   if (!scanUrlId) return;
 
-  const entry = findEntryByScanId(scanUrlId);
+  const entry = searchIndex.find(
+    (e) => String(e.scanId) === String(scanUrlId),
+  );
   if (!entry) {
     notification.error(
       "Plan not found",
@@ -346,28 +345,7 @@ function applyPlanFromUrl() {
     return;
   }
 
-  const controlEl = searchControlInstance.getContainer();
-  if (controlEl && controlEl._selectPlan) {
-    // Goes through the search control so its input box / results list
-    // stay in sync with the selection, same as a manual search pick.
-    controlEl._selectPlan(entry);
-  } else {
-    activatePlan(entry);
-  }
-}
-
-function updatePolygonState(polygon, tile) {
-  polygon
-    .getElement()
-    ?.classList.toggle("plan-polygon-selected", tilesGroup.hasLayer(tile));
-}
-
-function toggleTileLayer() {
-  if (tilesGroup.hasLayer(this)) {
-    tilesGroup.removeLayer(this);
-  } else {
-    tilesGroup.addLayer(this);
-  }
+  (selectPlanFromSearch || activatePlan)(entry);
 }
 
 populate();
