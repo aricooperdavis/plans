@@ -1153,6 +1153,18 @@
       ]
     },
     {
+      "scan_url_id": "0010AC97",
+      "plan_title": "MAUDLIN OR MAGDALIN",
+      "feature_id": "21865597.0",
+      "wgs84Extent": [
+        [-4.7264529, 50.4430741],
+        [-4.7248691, 50.4154985],
+        [-4.6706052, 50.4167572],
+        [-4.6721575, 50.444334],
+        [-4.7264529, 50.4430741]
+      ]
+    },
+    {
       "scan_url_id": "0010ACF1",
       "plan_title": "WHEAL BURROW AND BUTSON",
       "feature_id": "21865017.0",
