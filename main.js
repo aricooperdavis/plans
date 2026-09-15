@@ -27,8 +27,7 @@ var ewi = L.tileLayer(
 var oso = L.tileLayer(
   "https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=xAXiUyhGe2PCABd7fAoqREBbFCA8MSa5",
   {
-    attribution:
-      "Contains OS data © Crown copyright and database rights 2026",
+    attribution: "Contains OS data © Crown copyright and database rights 2026",
     maxZoom: 19,
   },
 );
@@ -57,6 +56,19 @@ notification.info(
 );
 L.control.locate().addTo(map);
 
+function activatePlan(entry) {
+  map.fitBounds(entry.layer.getBounds());
+  if (!tilesGroup.hasLayer(entry.tile)) {
+    toggleTileLayer.call(entry.tile);
+  }
+  updatePolygonState(entry.layer, entry.tile);
+}
+
+function findEntryByScanId(scanId) {
+  if (!scanId) return null;
+  return searchIndex.find((entry) => String(entry.scanId) === String(scanId));
+}
+
 var searchControl = L.Control.extend({
   options: { position: "bottomleft" },
   onAdd: function (map) {
@@ -77,12 +89,7 @@ var searchControl = L.Control.extend({
     );
 
     function selectPlan(entry) {
-      map.fitBounds(entry.layer.getBounds());
-      if (!tilesGroup.hasLayer(entry.tile)) {
-        toggleTileLayer.call(entry.tile);
-      }
-
-      updatePolygonState(entry.layer, entry.tile);
+      activatePlan(entry);
 
       resultsList.style.display = "none";
       input.value = entry.title || entry.scanId;
@@ -128,10 +135,14 @@ var searchControl = L.Control.extend({
 
     L.DomEvent.disableClickPropagation(container);
     L.DomEvent.disableScrollPropagation(container);
+
+    container._selectPlan = selectPlan;
+
     return container;
   },
 });
-map.addControl(new searchControl());
+var searchControlInstance = new searchControl();
+map.addControl(searchControlInstance);
 
 function fuzzyScore(query, target) {
   if (!target) return -1;
@@ -261,6 +272,14 @@ function populateMap(obj) {
               ),
           },
           {
+            text: "Copy share link",
+            callback: () => {
+              const shareUrl = new URL(window.location.href);
+              shareUrl.searchParams.set("scan_url_id", plan.scan_url_id);
+              navigator.clipboard.writeText(shareUrl.toString());
+            },
+          },
+          {
             text: "Close",
             callback: () => map.contextmenu.hide(),
           },
@@ -308,7 +327,33 @@ function populateMap(obj) {
       });
     },
   };
+
   L.control.opacity({ "Plan opacity": groupProxy }).addTo(map);
+  applyPlanFromUrl();
+}
+
+function applyPlanFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const scanUrlId = params.get("scan_url_id");
+  if (!scanUrlId) return;
+
+  const entry = findEntryByScanId(scanUrlId);
+  if (!entry) {
+    notification.error(
+      "Plan not found",
+      `No plan found for scan_url_id "${scanUrlId}".`,
+    );
+    return;
+  }
+
+  const controlEl = searchControlInstance.getContainer();
+  if (controlEl && controlEl._selectPlan) {
+    // Goes through the search control so its input box / results list
+    // stay in sync with the selection, same as a manual search pick.
+    controlEl._selectPlan(entry);
+  } else {
+    activatePlan(entry);
+  }
 }
 
 function updatePolygonState(polygon, tile) {
