@@ -661,6 +661,18 @@
       ]
     },
     {
+      "scan_url_id": "00109VRK",
+      "plan_title": "PEDN-AN-DREA",
+      "feature_id": "21861750.0",
+      "wgs84Extent": [
+        [-5.2362536, 50.238969],
+        [-5.2355952, 50.2292532],
+        [-5.2115178, 50.2299217],
+        [-5.2121712, 50.2396377],
+        [-5.2362536, 50.238969]
+      ]
+    },
+    {
       "scan_url_id": "00109VUG",
       "plan_title": "HOLMBUSH EAST FLOP JACK HOPEWELL LADY BEAM",
       "feature_id": "21866542.0",
