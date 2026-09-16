@@ -85,6 +85,18 @@
       ]
     },
     {
+      "scan_url_id": "00109LZP",
+      "plan_title": "ST. IVES WHEAL ALLEN",
+      "feature_id": "21867034.0",
+      "wgs84Extent": [
+        [-5.5105823, 50.2081909],
+        [-5.5102766, 50.2040274],
+        [-5.503194, 50.2042414],
+        [-5.5034991, 50.2084049],
+        [-5.5105823, 50.2081909]
+      ]
+    },
+    {
       "scan_url_id": "00109M0L",
       "plan_title": "TYWARNHAILE UNITED AND UNITED HILLS WHEAL CHARLES WHEAL TOWAN SOUTH",
       "feature_id": "21860832.0",
