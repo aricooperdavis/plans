@@ -279,6 +279,14 @@ async function populateMap() {
             },
           },
           {
+            text: "Report a problem with this plan",
+            callback: () =>
+              window.open(
+                "mailto:mineplans@cooper-davis.net?subject=Mine%20plan%20report:%20" +
+                  String(plan.scan_url_id),
+              ),
+          },
+          {
             text: "Close",
             callback: () => map.contextmenu.hide(),
           },
