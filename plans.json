@@ -613,6 +613,18 @@
       ]
     },
     {
+      "scan_url_id": "00109UJJ",
+      "plan_title": "POLCREBO (POLCRIBO)",
+      "feature_id": "21862218.0",
+      "wgs84Extent": [
+        [-5.3006484, 50.1570211],
+        [-5.300142, 50.1496717],
+        [-5.2883726, 50.1500059],
+        [-5.2888773, 50.1573553],
+        [-5.3006484, 50.1570211]
+      ]
+    },
+    {
       "scan_url_id": "00109UKT",
       "plan_title": "WHEAL PEEVOR AND WHEAL PEEVOR WEST (THIS RECORD LOST IN TRANSIT - BRITISH RAIL 02-06-1969)",
       "feature_id": "21861725.0",
