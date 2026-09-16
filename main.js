@@ -197,17 +197,13 @@ function searchPlans(query, limit = 8) {
   return results.slice(0, limit).map((result) => result.entry);
 }
 
-async function populate() {
+async function populateMap() {
   const requestURL = "plans.json";
   const request = new Request(requestURL);
 
   const response = await fetch(request);
-  const plans = await response.json();
+  const obj = await response.json();
 
-  populateMap(plans);
-}
-
-function populateMap(obj) {
   const plans = obj.plans;
   map.createPane("planTiles");
   map.getPane("planTiles").style.zIndex = 450;
@@ -351,4 +347,4 @@ function applyPlanFromUrl() {
   (selectPlanFromSearch || activatePlan)(entry);
 }
 
-populate();
+populateMap();
