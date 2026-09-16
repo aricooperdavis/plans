@@ -203,8 +203,11 @@ async function populateMap() {
 
   const response = await fetch(request);
   const obj = await response.json();
-
   const plans = obj.plans;
+
+  let input = document.getElementsByClassName("plan-search-input")[0]
+  input.placeholder = `Search ${plans.length} plans...`;
+
   map.createPane("planTiles");
   map.getPane("planTiles").style.zIndex = 450;
   map.getPane("planTiles").style.pointerEvents = "none";
