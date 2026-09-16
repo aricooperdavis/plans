@@ -625,6 +625,18 @@
       ]
     },
     {
+      "scan_url_id": "00109UK9",
+      "plan_title": "QUEEN OR NEWTON",
+      "feature_id": "21861953.0",
+      "wgs84Extent": [
+        [-4.2629953, 50.5093294],
+        [-4.2628271, 50.5058113],
+        [-4.2557603, 50.5059485],
+        [-4.255928, 50.5094666],
+        [-4.2629953, 50.5093294]
+      ]
+    },
+    {
       "scan_url_id": "00109UKT",
       "plan_title": "WHEAL PEEVOR AND WHEAL PEEVOR WEST (THIS RECORD LOST IN TRANSIT - BRITISH RAIL 02-06-1969)",
       "feature_id": "21861725.0",
