@@ -1273,6 +1273,18 @@
       ]
     },
     {
+      "scan_url_id": "0010ABWJ",
+      "plan_title": "ST. GEORGE GREAT AND DROSKYN UNITED GOOD FORTUNE",
+      "feature_id": "21862413.0",
+      "wgs84Extent": [
+        [-5.1798658, 50.3398223],
+        [-5.1794799, 50.3340472],
+        [-5.1652287, 50.3344363],
+        [-5.1656128, 50.3402115],
+        [-5.1798658, 50.3398223]
+      ]
+    },
+    {
       "scan_url_id": "0010ABWT",
       "plan_title": "BOSWIN",
       "feature_id": "21862396.0",
