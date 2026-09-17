@@ -1177,6 +1177,18 @@
       ]
     },
     {
+      "scan_url_id": "0010A2GD",
+      "plan_title": "TRENOW CONSOLS WHEAL PLEASANT",
+      "feature_id": "21866708.0",
+      "wgs84Extent": [
+        [-5.4591298, 50.1191979],
+        [-5.4583957, 50.1090178],
+        [-5.4397158, 50.1095733],
+        [-5.440446, 50.1197535],
+        [-5.4591298, 50.1191979]
+      ]
+    },
+    {
       "scan_url_id": "0010A2GX",
       "plan_title": "AMBROSE LAKE",
       "feature_id": "21866492.0",
