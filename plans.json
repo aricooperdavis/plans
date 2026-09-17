@@ -97,6 +97,18 @@
       ]
     },
     {
+      "scan_url_id": "00109LZX",
+      "plan_title": "TRELAWNY",
+      "feature_id": "21866512.0",
+      "wgs84Extent": [
+        [-4.4178545, 50.4564635],
+        [-4.4173536, 50.4466395],
+        [-4.4079519, 50.4468346],
+        [-4.4084509, 50.4566586],
+        [-4.4178545, 50.4564635]
+      ]
+    },
+    {
       "scan_url_id": "00109M0L",
       "plan_title": "TYWARNHAILE UNITED AND UNITED HILLS WHEAL CHARLES WHEAL TOWAN SOUTH",
       "feature_id": "21860832.0",
