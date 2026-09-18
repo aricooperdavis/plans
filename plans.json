@@ -793,6 +793,18 @@
       ]
     },
     {
+      "scan_url_id": "00109VO6",
+      "plan_title": "TRESKERBY NORTH; SCORRIER CONSOLS",
+      "feature_id": "21862207.0",
+      "wgs84Extent": [
+        [-5.2235395, 50.274967],
+        [-5.2220238, 50.2525215],
+        [-5.1800938, 50.2536773],
+        [-5.1815899, 50.2761237],
+        [-5.2235395, 50.274967]
+      ]
+    },
+    {
       "scan_url_id": "00109VQC",
       "plan_title": "CARNE GALVER",
       "feature_id": "21863737.0",
