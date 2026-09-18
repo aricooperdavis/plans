@@ -865,6 +865,18 @@
       ]
     },
     {
+      "scan_url_id": "00109W3C",
+      "plan_title": "WHEAL ALFRED WEST",
+      "feature_id": "21866367.0",
+      "wgs84Extent": [
+        [-5.4374895, 50.1766089],
+        [-5.4368812, 50.1681379],
+        [-5.4238325, 50.1685237],
+        [-5.4244385, 50.1769949],
+        [-5.4374895, 50.1766089]
+      ]
+    },
+    {
       "scan_url_id": "00109W5G",
       "plan_title": "MARKE VALLEY AND WHEAL JENKIN",
       "feature_id": "21866917.0",
