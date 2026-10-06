@@ -25,6 +25,18 @@
       ]
     },
     {
+      "scan_url_id": "0010920D",
+      "plan_title": "LADY BERTHA SOUTH OR LUDBROOK",
+      "feature_id": "21866160.0",
+      "wgs84Extent": [
+        [-4.150823, 50.4951303],
+        [-4.1506042, 50.4903155],
+        [-4.1419956, 50.4904743],
+        [-4.1422135, 50.4952891],
+        [-4.150823, 50.4951303]
+      ]
+    },
+    {
       "scan_url_id": "00109255",
       "plan_title": "BULLER AND BERTHA",
       "feature_id": "21866527.0",
