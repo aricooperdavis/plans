@@ -49,6 +49,18 @@
       ]
     },
     {
+      "scan_url_id": "0010924H",
+      "plan_title": "WHEAL SURPRISE OR WHITCHURCH DOWN CONSOLS",
+      "feature_id": "21866989.0",
+      "wgs84Extent": [
+        [-4.1199731, 50.5531413],
+        [-4.1193037, 50.5382128],
+        [-4.0912559, 50.5387201],
+        [-4.0919165, 50.5536489],
+        [-4.1199731, 50.5531413]
+      ]
+    },
+    {
       "scan_url_id": "00109255",
       "plan_title": "BULLER AND BERTHA",
       "feature_id": "21866527.0",
