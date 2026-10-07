@@ -25,6 +25,18 @@
       ]
     },
     {
+      "scan_url_id": "001091XZ",
+      "plan_title": "WHEAL YEOLAND SOUTH",
+      "feature_id": "21867383.0",
+      "wgs84Extent": [
+        [-4.1106445, 50.481071],
+        [-4.1101199, 50.4692964],
+        [-4.0821663, 50.4697999],
+        [-4.082684, 50.4815747],
+        [-4.1106445, 50.481071]
+      ]
+    },
+    {
       "scan_url_id": "0010920D",
       "plan_title": "LADY BERTHA SOUTH OR LUDBROOK",
       "feature_id": "21866160.0",
