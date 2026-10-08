@@ -25,6 +25,18 @@
       ]
     },
     {
+      "scan_url_id": "001091KX",
+      "plan_title": "WHEAL MARIA WEST AND WHEAL FORTESCUE",
+      "feature_id": "21872203.0",
+      "wgs84Extent": [
+        [-4.2487542, 50.5499327],
+        [-4.248292, 50.5402158],
+        [-4.2348888, 50.5404739],
+        [-4.2353483, 50.5501909],
+        [-4.2487542, 50.5499327]
+      ]
+    },
+    {
       "scan_url_id": "001091WN",
       "plan_title": "WHEAL ROBERT NORTH",
       "feature_id": "21865625.0",
