@@ -145,6 +145,18 @@
       ]
     },
     {
+      "scan_url_id": "0010920H",
+      "plan_title": "DIPPERTOWN",
+      "feature_id": "21865945.0",
+      "wgs84Extent": [
+        [-4.2352563, 50.648568],
+        [-4.2347866, 50.638669],
+        [-4.2162744, 50.6390228],
+        [-4.2167402, 50.6489219],
+        [-4.2352563, 50.648568]
+      ]
+    },
+    {
       "scan_url_id": "0010924H",
       "plan_title": "WHEAL SURPRISE OR WHITCHURCH DOWN CONSOLS",
       "feature_id": "21866989.0",
