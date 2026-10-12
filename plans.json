@@ -1981,6 +1981,30 @@
       ]
     },
     {
+      "scan_url_id": "0010ADBT",
+      "plan_title": "WHEAL MAID",
+      "feature_id": "21862019.0",
+      "wgs84Extent": [
+        [-5.1757323, 50.2396843],
+        [-5.1748682, 50.2266868],
+        [-5.1570284, 50.2271732],
+        [-5.1578876, 50.2401709],
+        [-5.1757323, 50.2396843]
+      ]
+    },
+    {
+      "scan_url_id": "0010ADBV",
+      "plan_title": "WHEAL MAID",
+      "feature_id": "21862014.0",
+      "wgs84Extent": [
+        [-5.1757835, 50.2396591],
+        [-5.1749198, 50.2266685],
+        [-5.1570882, 50.2271547],
+        [-5.157947, 50.2401455],
+        [-5.1757835, 50.2396591]
+      ]
+    },
+    {
       "scan_url_id": "0010HUEM",
       "plan_title": "CLIFFORD AMALGAMATED CONSOLIDATED AND UNITED ALE AND CAKES DEEBLES POLDORY POLDORY SOUTH WHEAL ANDREW WHEAL CLIFFORD WHEAL CUPBOARD WHEAL FIRE WHEAL FORTUNE WHEAL GIRL WHEAL LOVELACE WHEAL OAK WHEAL PANTER WHEAL VIRGIN",
       "feature_id": "21863675.0",
