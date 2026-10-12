@@ -2089,6 +2089,18 @@
       ]
     },
     {
+      "scan_url_id": "024151_01",
+      "plan_title": "SURFACE PLAN CORNWALL TIN & MINING CORPORATION GWENNAP CUSGARNE AREA ST DAY DISTRICT CORNWALL",
+      "feature_id": "24151.0",
+      "wgs84Extent": [
+        [-5.2003004, 50.2509202],
+        [-5.1982731, 50.2206589],
+        [-5.166323, 50.2215345],
+        [-5.1683301, 50.2517968],
+        [-5.2003004, 50.2509202]
+      ]
+    },
+    {
       "scan_url_id": "024228_01",
       "plan_title": "PENGREEP MINE",
       "feature_id": "24228.0",
