@@ -277,6 +277,30 @@
       ]
     },
     {
+      "scan_url_id": "0010927N",
+      "plan_title": "DEVON GREAT CONSOLS FANNY SOUTH WATSON'S WHEAL ANNA MARIA WHEAL EMMA WHEAL JOSIAH WHEAL MARIA",
+      "feature_id": "21867095.0",
+      "wgs84Extent": [
+        [-4.2268616, 50.5426239],
+        [-4.2266709, 50.5385748],
+        [-4.2077258, 50.5389356],
+        [-4.2079149, 50.5429848],
+        [-4.2268616, 50.5426239]
+      ]
+    },
+    {
+      "scan_url_id": "0010927P",
+      "plan_title": "DEVON GREAT CONSOLS FANNY SOUTH WATSON'S WHEAL ANNA MARIA WHEAL EMMA WHEAL JOSIAH WHEAL MARIA",
+      "feature_id": "21867096.0",
+      "wgs84Extent": [
+        [-4.2326077, 50.5433642],
+        [-4.2323904, 50.5387631],
+        [-4.2186277, 50.5390262],
+        [-4.2188436, 50.5436273],
+        [-4.2326077, 50.5433642]
+      ]
+    },
+    {
       "scan_url_id": "0010928D",
       "plan_title": "WHEAL GEORGE AND CHARLOTTE",
       "feature_id": "21866687.0",
