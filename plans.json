@@ -169,6 +169,18 @@
       ]
     },
     {
+      "scan_url_id": "00109219",
+      "plan_title": "WHEAL EXMOUTH",
+      "feature_id": "21865549.0",
+      "wgs84Extent": [
+        [-3.6494997, 50.6426522],
+        [-3.6490731, 50.6304721],
+        [-3.6372346, 50.6306389],
+        [-3.6376581, 50.6428191],
+        [-3.6494997, 50.6426522]
+      ]
+    },
+    {
       "scan_url_id": "0010924H",
       "plan_title": "WHEAL SURPRISE OR WHITCHURCH DOWN CONSOLS",
       "feature_id": "21866989.0",
