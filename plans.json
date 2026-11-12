@@ -349,6 +349,18 @@
       ]
     },
     {
+      "scan_url_id": "00109LBD",
+      "plan_title": "TREGREHAN AND WHEAL ELIZA NEW",
+      "feature_id": "21862907.0",
+      "wgs84Extent": [
+        [-4.7590391, 50.3644445],
+        [-4.7577785, 50.3426998],
+        [-4.7300226, 50.3433551],
+        [-4.7312707, 50.3651003],
+        [-4.7590391, 50.3644445]
+      ]
+    },
+    {
       "scan_url_id": "00109LCR",
       "plan_title": "ROSEWALL HILL AND RANSOM UNITED WHEAL GWEANS",
       "feature_id": "21867331.0",
