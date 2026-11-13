@@ -325,6 +325,18 @@
       ]
     },
     {
+      "scan_url_id": "00109KD5",
+      "plan_title": "POLBERRO OR ST. AGNES CONSOLS",
+      "feature_id": "21867147.0",
+      "wgs84Extent": [
+        [-5.2294752, 50.3270951],
+        [-5.228396, 50.3111828],
+        [-5.1989144, 50.3119984],
+        [-5.1999836, 50.3279112],
+        [-5.2294752, 50.3270951]
+      ]
+    },
+    {
       "scan_url_id": "00109KDN",
       "plan_title": "TRETHELLAN WHEAL BREWER",
       "feature_id": "21866555.0",
