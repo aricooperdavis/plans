@@ -61,6 +61,18 @@
       ]
     },
     {
+      "scan_url_id": "00106OED",
+      "plan_title": "DEEP PIT, INTAKE, BIRLEY VALE, BIRLEY WEST, HOLLINS END, WOODTHORPE",
+      "feature_id": "21891777.0",
+      "wgs84Extent": [
+        [-1.4313818, 53.3613434],
+        [-1.4315546, 53.3483283],
+        [-1.3994468, 53.3481716],
+        [-1.3992637, 53.3611863],
+        [-1.4313818, 53.3613434]
+      ]
+    },
+    {
       "scan_url_id": "001086PU",
       "plan_title": "OUTWOOD",
       "feature_id": "21944792.0",
